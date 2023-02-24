@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<!-- <marquee behavior="scroll" direction="left" class="marque-text"> <span style="color: red;">*imp</span> Hey {{name}}, You can use this applcation now for your usage...!</marquee> -->
+<div style="margin-top: 10px;display: flex;">
+
+<div style="width: 50%; 
+text-align: center;" [ngClass]="{'active' : isDashbord}"  (click)="isDashbord = true">
+    <button mat-fab color="primary" aria-label="Example icon button with a home icon" >
+        <mat-icon>dashboard</mat-icon>
+      </button>
+</div>
+    <div [ngClass]="{'active' : !isDashbord}" style="width: 50%;
+    text-align: center;" (click)="isDashbord = false">
+        <button mat-fab color="warn" aria-label="Example icon button with a home icon" >
+            <mat-icon>home</mat-icon>
+          </button>
+    </div>
+
+
+    <!-- <button class="btn-r dsh" [ngClass]="{'bg-active' : isDashbord}" (click)="isDashbord = true">Dashboard</button>
+    <button class="btn-r home" [ngClass]="{'bg-active' : !isDashbord}" (click)="isDashbord = false">Home</button> -->
+</div>
+
+<div style="margin-top: 50px;" [ngClass]="{'display-none' : !isDashbord, 'display-block' : isDashbord}">
+    <div style="margin-top: 10px;">
+        <!-- mat-raised-button color="primary" -->
+        <button style="width: 50%;" mat-raised-button color="primary" (click)="isPie = true" >BAR Chart</button>
+        <button style="width: 50%;" mat-raised-button color="warn"  (click)="isPie = false">PIE Chart</button>
+    </div>
+    <div [ngClass]="{'display-none' : !isPie , 'display-block' : isPie}">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div [ngClass]="{'display-none' : isPie, 'display-block' : !isPie}">
+        <canvas  id="myChart1" width="400" height="400"></canvas>
+    </div>
+</div>
+
+    <div class="card" [ngClass]="{'display-none' : isDashbord, 'display-block' : !isDashbord}">
+        <!-- <div class="img" *ngFor="let user of users"> -->
+            <mat-card *ngFor="let user of users" style="display: flex;
+            justify-content: space-between; margin-top: 2px;">
+            <div>
+                <img class="img-i" [src]="user?.img" height="70rem" width="70rem"/>
+                  
+            </div>
+            <div>
+                <p class="name">{{user?.userName}}</p> 
+                <p class="name">Paid {{user?.spentAmount}} /-</p>   
+            </div>
+            <div class="buttons">
+                <!-- <button class="btn-item view">
+                    <a class="a-t"  [routerLink]="['/viewDetails', user.userId]" routerLinkActive="active" >View</a>
+                </button>
+                <button *ngIf="userId == user.userId" class="btn-item add">
+                    <a class="a-t"  [routerLink]="['/addForm']" routerLinkActive="active" >+ Add</a></button> -->
+                    <button [routerLink]="['/viewDetails', user.userId]" routerLinkActive="active" mat-mini-fab color="primary" style="margin-bottom: 5px;" aria-label="Example icon button with a menu icon">
+                        <mat-icon>view_list</mat-icon>
+                      </button>
+                      <button *ngIf="userId == user.userId" mat-mini-fab color="accent" aria-label="Example icon button with a menu icon">
+                        
+                        <a class="a-t"  [routerLink]="['/addForm']" routerLinkActive="active" ><mat-icon>queue</mat-icon></a>
+                      </button>
+            </div>
+        <!-- </div> -->
+    </mat-card>
+        <div *ngIf="role  === 'admin'" class="rolee">
+            <button mat-raised-button color="warn" style="margin-right: 20px;" [disabled]="isDelete" (click)="clearData()">Clear All</button>
+            <button mat-raised-button color="primary"><a href="https://fifthfloor.herokuapp.com/orders/check/pdf" style="text-decoration: none;color: white;">Get Bill</a></button>
+            <!-- <button [ngClass]="{'delete-all' : isDelete}" [disabled]="isDelete" class="clear-all" (click)="clearData()">Clear All</button> -->
+        </div>
+        <!-- <div *ngIf="users.length" class="rolee"> -->
+            <!-- <button mat-raised-button color="primary"><a href="https://fifthfloor.herokuapp.com/orders/check/pdf" style="text-decoration: none;color: white;">Get Bill</a></button> -->
+            <!-- <button class="get-pdf"></button> -->
+        <!-- </div> -->
+    </div>

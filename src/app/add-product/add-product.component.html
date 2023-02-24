@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div>
+    <div class="form">
+        <div class="im-par">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Product name</mat-label>
+                <input matInput type="text" [(ngModel)]="product" placeholder="Product name">
+              </mat-form-field>
+              
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Purpose</mat-label>
+                <input matInput type="text" [(ngModel)]="purpose" placeholder="Purpose">
+              </mat-form-field>
+              
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" [(ngModel)]="amount" placeholder="Enter Amount">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" [(ngModel)]="date" placeholder="please select date">
+              </mat-form-field>
+
+            <!-- <input type="text" class="ip" [(ngModel)]="product" style="width: 100%;" placeholder="Product name">
+            <input type="text" class="ip" style="width: 100%;" [(ngModel)]="purpose" placeholder="Write purpose">
+            <input type="number" style="width: 100%;" class="ip" [(ngModel)]="amount" placeholder="Enter amount">
+            <input type="date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" style="width: 100%;" class="ip" [(ngModel)]="date" placeholder="please select date"> -->
+        </div>
+        <div style="width: 100%;">
+
+            <button style="width: 80%;height: 48px;" mat-raised-button [disabled]="isSumit" color="primary" (click)="isUpdate ? update() : Submit()">Submit</button>
+            <!-- <button class="btn-login" [ngClass]="{'login-disable' : isSumit}" [disabled]="isSumit" (click)="isUpdate ? update() : Submit()">Submit</button> -->
+        </div>
+    </div>
+    </div>

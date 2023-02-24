@@ -1,0 +1,31 @@
+.nav{
+    background: #432c78;;
+    height: 60px;
+}
+.pro-pic-nav{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-right: 10px;
+}
+.img{
+    border-radius: 30px;
+}
+.name{
+    margin-left: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+}
+.logout{
+    color: red;
+    border: 1px solid red;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 5px;
+    text-align: center;
+    cursor: pointer;
+}

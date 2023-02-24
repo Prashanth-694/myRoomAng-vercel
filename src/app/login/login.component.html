@@ -1,0 +1,35 @@
+<div>
+<div class="form">
+    <div class="im-par">
+        <h1 style="text-align: initial;
+        font-weight: bold;">Login</h1>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [(ngModel)]="email" placeholder="Enter Email">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="showPwd ? 'text':'password' " [(ngModel)]="password" placeholder="Enter Password">
+            <mat-icon (click)="showHidePwd()" matSuffix>{{showPwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+          <!-- visibility_off -->
+        <!-- <input type="email" class="ip" [(ngModel)]="email" placeholder="Enter Email">
+        <input type="password" class="ip" [(ngModel)]="password" placeholder="Enter password"> -->
+    </div>
+    <div style="display: flex;
+    flex-direction: row-reverse;">
+        <a routerLink="/forgot-pwd" style="margin-left: 5px;align-items: center;display: flex;">forgot password?</a>
+
+        <!-- <div class="example-button-container"> -->
+            <!-- <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+              <mat-icon>home</mat-icon>
+            </button> -->
+          <!-- </div> -->
+          <button style="height: 48px;
+          width: 180px;
+          font-size: 20px;" mat-raised-button [ngClass]="{'login-disable' : isLogin}" [disabled]="isLogin" (click)="login()" color="primary">Login</button>
+
+        <!-- <button class="btn-login" [ngClass]="{'login-disable' : isLogin}" [disabled]="isLogin" (click)="login()">Login</button> -->
+    </div>
+</div>
+</div>

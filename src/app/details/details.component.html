@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="card">
+    <form style="    display: flex;
+    justify-content: center;" *ngIf="this.details?.length > 0">
+        <mat-form-field class="search" appearance="outline" style="width: 95%;">
+            <!-- <mat-label>Email</mat-label> -->
+            <input [formControl]="searchControl" matInput placeholder="Search any key...">
+          </mat-form-field>
+        </form>
+    <div *ngIf="searchResults?.length > 0;else nodata">
+        
+        <!-- <div class="img" *ngFor="let detail of details"> -->
+            <mat-card *ngFor="let detail of searchResults" style="margin-top: 2px;display: flex;
+            justify-content: space-between;">
+                <div>
+                    <p class="name">Item : {{detail?.itemName}}</p> 
+                    <p class="name">amount : {{detail?.amount}} /-</p> 
+                    <p class="name">description : {{detail?.description}}</p>
+                    <p class="name">date : {{detail?.createdDate}}</p>
+                </div>
+                <div class="buttons" *ngIf="userId == detail.userId">
+    
+                    <!-- <mat-icon>edit</mat-icon> -->
+                    
+                    <button mat-mini-fab color="warn" style="margin-bottom: 5px;" aria-label="Example icon button with a delete icon">
+                        <mat-icon (click)="delete(detail)" >delete</mat-icon>
+                      </button>
+                      <button (click)="updateOrDelete(detail)" mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                    <!-- <button class="btn-item edit" (click)="updateOrDelete(detail)">Edit
+                    </button>
+                    <button class="btn-item add" (click)="delete(detail)">Delete</button> -->
+                </div>
+            </mat-card>
+
+        <!-- </div> -->
+    </div>
+    <ng-template #nodata>
+        <div class="no-data">
+            <img class="no-data-img" src="https://cdn.dribbble.com/users/3005912/screenshots/12003163/media/3f9413e9dc5736a539ae7f426dfe7832.jpg" height="120" width="150">
+        </div>
+    </ng-template>
+</div>
